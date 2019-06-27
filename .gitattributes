@@ -2,4 +2,4 @@
 *.js linguist-detectable=false
 *.html linguist-detectable=false
 *.vb linguist-detectable=true
-*.aspx linguist-detectable=true
+*.asp linguist-detectable=true
