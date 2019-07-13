@@ -1,12 +1,18 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/User/MPUser.master" AutoEventWireup="false" CodeFile="TestSoal2.aspx.vb" Inherits="User_TestSoal2" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="TestSoal.aspx.vb" Inherits="User_TestSoal" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    Test Potensi Akademik
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="welcomepart" Runat="Server">
-    <div id="welcm" runat="server"></div>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Test Potensi Akademik</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
     <div class="container-fluid">
         <div class="row justify-content-center mt-3" ><h3>Soal</h3></div>
         <div class="row justify-content-center mt-1">
@@ -22,7 +28,7 @@
         </div>
     </div>
     <div class="py-4 table-bordered rounded">
-        <table class="table-sm ml-2 table-bordered">
+        <table class="table-sm ml-2 table-bordered ">
             <tr>
                 <td>
                     Pilih Soal
@@ -86,7 +92,6 @@
         </div>
     
     </div>
-</asp:Content>
-
-
-
+    </form>
+</body>
+</html>

@@ -5,6 +5,7 @@ Partial Class User_LihatHasil
     Dim cnsql As String = ConfigurationManager.ConnectionStrings("consql").ConnectionString
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Session("CountdownTimer") = Nothing
         'mengecek session user
         If Session("user-sesi") Is Nothing Then
             Response.Redirect("default.aspx")
@@ -18,6 +19,13 @@ Partial Class User_LihatHasil
         cn = New SqlConnection(cnsql)
         Try
             cn.Open()
+            Dim sqlcek As String = "Select COUNT(*) From TB_Nilai WHERE id_User='" & u.getid & "'"
+            Dim cmdcek As SqlCommand = New SqlCommand(sqlcek, cn)
+            Dim benar As Int16
+            benar = cmdcek.ExecuteScalar
+            If benar = 0 Then
+                Response.Redirect("Home.aspx")
+            End If
             Dim sql As String = "SELECT * FROM TB_Nilai WHERE id_user='" & idesr & "'"
             Dim cmd As SqlCommand = New SqlCommand(sql, cn)
             Dim data As SqlDataReader = cmd.ExecuteReader
@@ -28,7 +36,6 @@ Partial Class User_LihatHasil
             tmp = tmp & "<th scope='col'>Salah</th>"
             tmp = tmp & "<th scope='col'>Score</th>"
             tmp = tmp & "<th scope='col'>Keterangan</th></tr>"
-
             If data.HasRows Then
                 While (data.Read)
                     tmp = tmp & "<tr>"
@@ -42,6 +49,7 @@ Partial Class User_LihatHasil
                 End While
                 tmp = tmp & "</table>"
                 datasoal.InnerHtml = tmp
+
             End If
         Catch ex As Exception
             Response.Write("Ada Kesalahan Akses Database :" & ex.Message)
